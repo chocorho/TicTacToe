@@ -73,11 +73,11 @@ void Next_turn_message()
 	// Prints who's turn is next 
 	if (odd_even())
 	{
-		std::cout << " \n\n PLAYER 2's TURN (X)";
+		std::cout << " \n PLAYER 2's TURN (X)";
 	}
 	else
 	{
-		std::cout << " \n\n PLAYER 1's TURN (O)";
+		std::cout << " \n PLAYER 1's TURN (O)";
 	}
 }
 
