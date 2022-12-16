@@ -17,11 +17,13 @@ int main()
 	std::cout << "--- " << "--- " << "--- "<< std::endl;
 	std::cout << " " << Cell[2][0] << " | " << Cell[2][1] << " | " << Cell[2][2] << std::endl;  */
 
-	Game_Description();
-	Draw_Board();
-	Play();
+		reset_board();
+		Game_Description();
+		Draw_Board();
+		Play();
 
-	
+		return 0;
 
-	std::cin.get();
+		std::cin.get();
 }
+

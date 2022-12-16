@@ -1,12 +1,14 @@
 #include<iostream>
 #include<stdio.h>
 #include<string>
+#include<cmath>
 
 extern char Cell[3][3] ;
 
 // functions definitions
 
 unsigned int turn = 1;
+int WINNER = 0;
 
 bool odd_even()
 {
@@ -24,11 +26,15 @@ bool odd_even()
 
 void Draw_Board()
 {
+	printf("\n");
 
-	printf("\n    %c  |  %c |  %c\n   ---|---|---\n", Cell[0][0], Cell[0][1], Cell[0][2]);
-	printf("    %c  |  %c |  %c\n   ---|---|---\n", Cell[1][0], Cell[1][1], Cell[1][2]);
-	printf("    %c  |  %c |  %c\n", Cell[2][0], Cell[2][1], Cell[2][2]);
+	printf("     %c | %c | %c ", Cell[0][0], Cell[0][1], Cell[0][2]);
+	printf("\n    ---|---|---\n");
+	printf("     %c | %c | %c ", Cell[1][0], Cell[1][1], Cell[1][2]);
+	printf("\n    ---|---|---\n");
+	printf("     %c | %c | %c ", Cell[2][0], Cell[2][1], Cell[2][2]);
 
+	printf("\n");
 }
 
 
@@ -61,20 +67,23 @@ void Game_Description()
 }
 
 
+
 void Next_turn_message()
 {
 	// Prints who's turn is next 
 	if (odd_even())
 	{
-		std::cout << " \n PLAYER 2's TURN (X)";
+		std::cout << " \n\n PLAYER 2's TURN (X)";
 	}
 	else
 	{
-		std::cout << " \n PLAYER 1's TURN (O)";
+		std::cout << " \n\n PLAYER 1's TURN (O)";
 	}
 }
 
-int Winner()
+
+
+void Winner()
 {
 	// check for straight line pairs horizontally for all rows one-by-one
 	for (int i = 0; i < 3; i++)
@@ -84,12 +93,12 @@ int Winner()
 			if (Cell[i][0] == Cell[i][2] && Cell[i][0] == 'O')
 			{
 				std::cout << "\n=================== Player 1 WON !! 'O' showing domincancy here :} ======================";
-				return 0;
+				WINNER = 1;
 			}
 			else if (Cell[i][0] == Cell[i][2] && Cell[i][0] == 'X')
 			{
 				std::cout << "\n=================== Player 2 WON !! 'X' showing domincancy here :} ======================";
-				return 0;
+				WINNER = 1;
 			}
 		}
 	}
@@ -101,14 +110,14 @@ int Winner()
 		{
 			if (Cell[0][i] == Cell[2][i] && Cell[0][i] == 'O')
 			{
-				return 0;
 				std::cout << "\n=================== Player 1 WON !! 'O' showing domincancy here :} ======================";
+				WINNER = 1;
 			}
 
 			else if (Cell[0][i] == Cell[2][i] && Cell[0][i] == 'X')
 			{
-				return 0;
 				std::cout << "\n=================== Player 1 WON !! 'X' showing domincancy here :} ======================";
+				WINNER = 1;
 			}
 		}
 	}
@@ -118,14 +127,14 @@ int Winner()
 	{
 		if (Cell[0][0] == Cell[2][2] && Cell[0][0] == 'O')
 		{
-			return 0;
 			std::cout << "\n=================== Player 1 WON !! 'O' showing domincancy here :} ======================";
+			WINNER = 1;
 		}
 
 		else if (Cell[0][0] == Cell[2][2] && Cell[0][0] == 'X')
 		{
-			return 0;
 			std::cout << "\n=================== Player 1 WON !! 'X' showing domincancy here :} ======================";
+			WINNER = 1;
 		}
 	}
 
@@ -134,21 +143,33 @@ int Winner()
 	{
 		if (Cell[2][0] == Cell[0][2] && Cell[2][0] == 'O')
 		{
-			return 0;
 			std::cout << "\n=================== Player 1 WON !! 'O' showing domincancy here :} ======================";
+			WINNER = 1;
 		}
 
 		if (Cell[2][0] == Cell[0][2] && Cell[2][0] == 'X')
 		{
-			return 0;
 			std::cout << "\n=================== Player 1 WON !! 'X' showing domincancy here :} ======================";
+			WINNER = 1;
 		}
 	}
 
 }
 
 
-int Play()
+void reset_board()
+{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				Cell[i][j] = ' ';
+			}
+		}
+}
+
+
+void Play()
 {
 
 	unsigned int i;
@@ -162,15 +183,13 @@ int Play()
 		std::cout << "\n\nEnter the 1st index : ";
 		std::cin >> i;
 
-		if (i!=0 && i!=1 && i!=2)
+
+		if (i!=0 && i!=1 && i!=2 )
 		{
 			std::cout << R"(
 				
------------------- INVALID INDEX ** 1st INDEX IS INVALID ** PLAY AGAIN ------------------------ )";
-			if (loopvar > 0)
-			{
-				loopvar -= 1;
-			}
+---------------------- INVALID INDEX ** 1st INDEX IS INVALID ** ENTER AGAIN -------------------------- )";
+			loopvar = abs(loopvar - 1);
 			Draw_Board();
 			continue;
 		}
@@ -178,21 +197,23 @@ int Play()
 		std::cout << "\nEnter the 2nd index : ";
 		std::cin >> j;
 
-		if (i != 0 && i != 1 && i != 2)
+		if (i != 0 && i != 1 && i != 2 )
 		{
 			std::cout << R"(
 				
------------------- INVALID INDEX ** 2st INDEX IS INVALID ** PLAY AGAIN ------------------------ )";
-			loopvar -= 1;
+---------------------- INVALID INDEX ** 2st INDEX IS INVALID ** ENTER AGAIN --------------------- )";
+			loopvar = abs(loopvar-1) ;
 			Draw_Board();
 			continue;
 		}
 
-		/* Its player 1 turn when turn is odd, player 2's when turn is even 
-		   After each turn turn gets incremented by 1 .       */
 
+
+
+	/* Its player 1 turn when turn is odd, player 2's when turn is even 
+		   After each turn turn gets incremented by 1 .       */
 		if (odd_even())
-			if (Cell[i][j] == NULL)
+			if (Cell[i][j] == ' ')
 			{
 				Cell[i][j] = 'X';
 			}
@@ -200,32 +221,47 @@ int Play()
 			{
 				std::cout << R"(
 				
------------------- INVALID MOVE ** This block is already filled ** PLAY AGAIN ------------------------ )";
-				loopvar -= 1;
+----------------------- INVALID MOVE ** This block is already filled ** HERE YOU GO AGAIN --------------------- )";
+				loopvar = abs(loopvar - 1);
 				Draw_Board();
 				continue;
 			}
 		else
 		{
-			if (Cell[i][j] == NULL)
+			if (Cell[i][j] == ' ')
 			{
 				Cell[i][j] = 'O';
 			}
 			else
 			{
-				std::cout << "Invalid Move , this is already filled ";
-				loopvar -= 1;
+				std::cout << R"(
+				
+-------------------------- INVALID MOVE ** This block is already filled ** HERE YOU GO AGAIN ---------------------------- )";
+				loopvar = abs(loopvar - 1);
 				Draw_Board();
 				continue;
 			}
 		}
 
-		Winner();
+
+
+		
 		Draw_Board();
 		turn += 1;
 
+		Winner();
+		if (WINNER == 1)
+		{
+			break;
+		}
 	}
-	std::cout << "\n=================== SADLY NOBODY WON :{ ======================";
-	return 0;
+
+	if (WINNER == 0)
+	{
+		std::cout << "\n\n==================================== GAME DRAW ==========================================\n\n";
+	}
+	
 }
+
+
 
