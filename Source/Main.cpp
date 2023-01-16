@@ -16,9 +16,10 @@ int main()
 	std::cout << " " << Cell[1][0] << " | " << Cell[1][1] << " | " << Cell[1][2] << std::endl;
 	std::cout << "--- " << "--- " << "--- "<< std::endl;
 	std::cout << " " << Cell[2][0] << " | " << Cell[2][1] << " | " << Cell[2][2] << std::endl;  */
-
-		reset_board();
+	
 		Game_Description();
+		reset_board();
+		
 		Draw_Board();
 		Play();
 
