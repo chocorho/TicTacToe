@@ -3,18 +3,15 @@
 #include<string>
 #include<cmath>
 
-void take_input(int& a, int& b);
-
-extern char Cell[3][3] ;
-
-// functions definitions
+// board array
+char Cell[3][3] ;
 
 unsigned int turn = 1;
 int WINNER = 0;
 
 bool odd_even()
 {
-	// check if i is even or odd
+	// check even or odd
 	if (turn % 2 == 0)
 	{
 		return true;
@@ -171,6 +168,25 @@ void reset_board()
 }
 
 
+void take_input(int& a, int& b)
+{
+		do
+		{
+			std::cout << "\n\nEnter the 1st index : ";
+			std::cin >> a;
+
+		} while (a < 0 && a > 2);
+
+
+		do
+		{
+			std::cout << "\nEnter the 2nd index : ";
+			std::cin >> b;
+
+		} while (b < 0 && b > 2);
+}
+
+
 void Play()
 {
 
@@ -238,24 +254,6 @@ void Play()
 	{
 		std::cout << "\n\n==================================== GAME DRAW ==========================================\n\n";
 	}
-}
-
-void take_input(int& a, int& b)
-{
-		do
-		{
-			std::cout << "\n\nEnter the 1st index : ";
-			std::cin >> a;
-
-		} while (a < 0 && a > 2);
-
-
-		do
-		{
-			std::cout << "\nEnter the 2nd index : ";
-			std::cin >> b;
-
-		} while (b < 0 && b > 2);
 }
 
 
