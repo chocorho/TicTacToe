@@ -1,17 +1,31 @@
 # Tic_Tac_Toe
 
-### This is a  *CONSOLE GAME* written in *C/C++*
+A simple CLI TicTacToe Game 
+Two Player Game
  
+---
+
+
+## Requirements
+
+1. make installed
+
+2. Compiler installed : GNU gcc or clang
+
+
+---
  
-```
-1 Clone the repo
-2 Build the project
-3 Play the game.
+## Run the game
 
-```
+1. Clone the repo
+2. Open the terminal
+3. Navigate to the cloned repository
+4. * If you have gcc installed run this command :
+          ```make g++ run```
+   * If you have clang installed run this command :
+          ```make clang run``` 
 
-**If you use Visual Studio , just build the solution**
 
- ---
+
 
  
