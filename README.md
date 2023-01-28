@@ -8,9 +8,9 @@ Two Player Game
 
 ## Requirements
 
-1. make installed
+1. make 
 
-2. Compiler installed : GNU gcc or clang
+2. Compiler : gcc or clang
 
 
 ---
