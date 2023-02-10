@@ -363,7 +363,7 @@ void game::play_two_player()
 	}
 }
 
-
+// ask user if they wants to play again
 bool game::ask_play_again() 
 {
 	char temp_char;

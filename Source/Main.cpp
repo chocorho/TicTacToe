@@ -25,7 +25,7 @@ int main(void)
 		}
 		break;
 	}
-	std::cout << "\n Have a nice day\n";
+	std::cout << "\n ******* Have a nice day *******\n\n";
 	std::cin.get();
 }
 
