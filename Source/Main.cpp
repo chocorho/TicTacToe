@@ -1,16 +1,34 @@
 #include <iostream>
-#include "Header.hpp"
 
-int main()
+#include "./headers/game.hpp"
+
+
+int main(void)
 {
-	const char Player1 = 'O';
-	const char Player2 = 'X';
+	while (true)
+	{
+		system("cls");
+		game g_object = game();
 
-	Game_Description();
-	reset_board();
-	Draw_Board();
-	Play();
+		if (g_object.set_game_mode() == 0)
+		{
+			g_object.play_single_player();
+		}
+		else
+		{
+			g_object.play_two_player();
+		}
 
+		if (g_object.ask_play_again())
+		{
+			continue;
+		}
+		break;
+	}
+	std::cout << "\n Have a nice day\n";
 	std::cin.get();
 }
+
+
+
 
