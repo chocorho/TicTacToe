@@ -3,13 +3,13 @@ V3 = clang
 
 
 g++ : 
-	$(V1) -o ./Main ./Source/Main.cpp ./Source/Header.hpp ./Source/Source.cpp
+	$(V1) -o ./Main ./Source/main.cpp ./Source/game.cpp ./Source/headers/game.hpp 
 	
 
 clang :
-	$(V3) -o ./Main ./Source/Main.cpp ./Source/Header.hpp ./Source/Source.cpp
+	$(V3) -o ./Main ./Source/main.cpp ./Source/game.cpp ./Source/headers/game.hpp 
 
-#executable/binary file will be created in bin folder
+#executable file will be created in bin folder
 
 
 run : 
