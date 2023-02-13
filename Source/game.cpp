@@ -488,6 +488,13 @@ void game::play_single_player()
 					break;
 				}
 			}
+			
+			check_winner();
+
+			if (WINNER)
+			{
+				break;
+			}
 		}
 	}
 }
