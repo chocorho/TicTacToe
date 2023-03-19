@@ -4,12 +4,12 @@ class game
 {
 public:
 	game();
+	~game() {}
 
 	void initialize_board();
 
 	void check_winner();
-
-	int set_game_mode();
+	int  set_game_mode();
 
 	void single_player();
 	void two_players();
@@ -19,21 +19,8 @@ public:
 
 	bool check_game_draw();
 	bool ask_play_again();
-
-private:
-
-	// In single-player Player1 is bot --> Katy :)
-	std::string Player1;
-	std::string Player2;
-
-	bool WINNER;
-	bool PLAYER_1_TURN;
-
-	char board[3][3];
-
-private :
 	
-	void set_player1();
+	void set_player2();
 	void get_player1();
 	void get_player2();
 
@@ -45,6 +32,15 @@ private :
 	void print_game_draw();
 	void print_win_message(std::string str);
 
+
+private:
+	std::string Player1;
+	std::string Player2;
+
+	bool WINNER;
+	bool PLAYER_1_TURN;
+
+	char board[3][3];
 };
 
 

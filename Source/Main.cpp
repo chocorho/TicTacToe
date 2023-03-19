@@ -1,9 +1,9 @@
 #include <iostream>
-
 #include "./headers/game.hpp"
 
+// In single-player Player1 is bot --> Caty :)
 
-int main(void)
+int main()
 {
 	while (true)
 	{
@@ -25,7 +25,9 @@ int main(void)
 		}
 		break;
 	}
-	std::cout << "\n ******* Have a nice day *******\n\n";
+
+	system("cls");
+	std::cout << "\n\n ------------ Have a nice day ------------\n\n";
 	std::cin.get();
 }
 

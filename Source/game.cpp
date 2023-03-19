@@ -1,7 +1,7 @@
-
 #include <stdio.h>
-#include <ctime>
+#include <time.h>
 #include <iostream>
+#include <random>
 
 #include "./headers/game.hpp"
 
@@ -19,9 +19,9 @@ game::game()
 
 
 // getter & setter methods
-void game::set_player1()
+void game::set_player2()
 {
-	Player1 = COMPUTER;
+	Player2 = COMPUTER;
 }
 
 void game::get_player1()
@@ -39,8 +39,8 @@ void game::get_player2()
 // single & two-player
 void game::single_player()
 {
-	set_player1();
-	get_player2();
+	get_player1();
+	set_player2();
 }
 
 void game::two_players()
@@ -56,17 +56,9 @@ bool game::ask_play_two_player()
 
 	while (true)
 	{
-		std::cout << "\n\nSINGLE PLAYER(S) OR TWO-PLAYER(T) : ";
+		std::cout << "\nCHOOSE GAME MODE - SINGLE PLAYER(S/s) or TWO-PLAYER(T/t) : ";
 		std::cin >> input;
 		char ch = toupper(input);
-		
-		if (!std::cin)
-		{
-			print_invalid_message();
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
-			continue;
-		}
 
 		if (ch == 'T')
 		{
@@ -76,7 +68,7 @@ bool game::ask_play_two_player()
 		{
 			return false;
 		}
-		print_invalid_message();
+		std::cin.ignore(1000, '\n');
 	}
 }
 
@@ -112,11 +104,11 @@ void game::initialize_board()
 
 void game::print_game_info()
 {
-	const char* rules = R"( 
- --- Tic Tac Toe --- 
+const char* rules = R"( 
+ 		--- Tic Tac Toe --- 
 
- Player 1 : 'O'
- Player 2 : 'X'
+ 		  Player 1 : 'O'
+ 		  Player 2 : 'X'
 
 ** Provide index where you want to mark your 'O' or 'X' within the Board ** 
 
@@ -131,7 +123,7 @@ void game::print_game_info()
                      |     | 
 
 
-+-----------+----------+--- HERE BEGINS THE GAME ----+----------+----------+----------+ 
++-----------+----------+----------+----------+----------+
 )";
 
 	printf("%s\n", rules);
@@ -179,6 +171,8 @@ void game::check_winner()
 		{
 			if (board[i][0] == board[i][2] && board[i][0] == 'O')
 			{
+				system("cls");
+				print_board();
 				print_win_message(Player1);            
 				WINNER = true;
 			}
@@ -299,31 +293,33 @@ void game::play_two_player()
 		print_board();
 
 		// input
-		std::cout << "Enter 1st index : ";
-		std::cin >> i;
+		do
+		{
+			std::cout << "Enter 1st index : ";
+			std::cin >> i;
+		}
+		while (i > 2 || i < 0);
 
-		if (i > 2 || i < 0) { continue; }
+		do
+		{
+			std::cout << "Enter 2nd index : ";
+			std::cin >> i;
+		}
+		while (i > 2 || i < 0);
 
-		std::cout << "Enter 2nd index : ";
-		std::cin >> j;
-
-		if (j > 2 || j < 0) { continue;  }
 
 		// check for correct input
 		if (!std::cin)
 		{
-			print_invalid_message();
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			continue;
 		}
 
-
 		if (PLAYER_1_TURN == true)
 		{
 			if (board[i][j] != ' ')
 			{
-				print_invalid_message();
 				continue;
 			}
 			else
@@ -344,12 +340,11 @@ void game::play_two_player()
 		{
 			if (board[i][j] != ' ')
 			{
-				print_invalid_message();
 				continue;
 			}
 			else
 			{
-				board[i][j] = '0';
+				board[i][j] = 'O';
 				PLAYER_1_TURN = true;
 
 				check_winner();
@@ -407,7 +402,14 @@ bool game::check_game_draw()
 	return true;
 }
 
+// generate random number in from 0 to 2
+int randomNumber()
+{
+	static std::default_random_engine randomEngine(time(NULL));
 
+	std::uniform_int_distribution<int> randomNumber(0, 2);
+	return randomNumber(randomEngine);
+}
 
 void game::play_single_player()
 {
@@ -416,7 +418,6 @@ void game::play_single_player()
 
 	while (true)
 	{
-
 		system("cls");
 
 		if (check_game_draw())
@@ -430,56 +431,56 @@ void game::play_single_player()
 
 		print_board();
 
-		if (PLAYER_1_TURN)  // true
+		if (PLAYER_1_TURN == true)
 		{
 			// input
-			std::cout << "Enter 1st index : ";
-			std::cin >> i;
+			do
+			{
+				std::cout << "Enter 1st index : ";
+				std::cin >> i;
+			}
+			while (i > 2 || i < 0);
 
-			if (i > 2 || i < 0) { continue; }
-
-			std::cout << "Enter 2nd index : ";
-			std::cin >> j;
-
-			if (j > 2 || j < 0) { continue; }
+			do
+			{
+				std::cout << "Enter 2nd index : ";
+				std::cin >> j;
+			}
+			while (j > 2 || j < 0);
 
 
 			// check for correct input
-			if (!std::cin)
+			if (std::cin.fail())
 			{
-				print_invalid_message();
 				std::cin.clear();
-				std::cin.ignore(100, '\n');
+				std::cin.ignore(1000, '\n');
 				continue;
 			}
 
 			if (board[i][j] == ' ')
 			{
-				board[i][j] = '0';
+				board[i][j] = 'O';
 				PLAYER_1_TURN = false;
+				 
+				check_winner();     // problem is here
 
-				check_winner();
-
-				if (WINNER)
+				if (WINNER)         // problem is here
 				{
 					break;
 				}
 			}
 			else
 			{
-				print_invalid_message();
 				continue;
 			}
 		}
 
 		else
 		{
-			srand(time(0));
-
 			while (true)
 			{
-				i = rand() % 3;
-				j = rand() % 3;
+				i = randomNumber();
+				j = randomNumber();
 
 				if (board[i][j] == ' ')
 				{
@@ -491,10 +492,10 @@ void game::play_single_player()
 			
 			check_winner();
 
-			if (WINNER)
-			{
+			if (WINNER) {
 				break;
 			}
 		}
 	}
 }
+
