@@ -1,16 +1,18 @@
 # Tic_Tac_Toe
 
-A simple CLI TicTacToe Game 
-Two Player Game
+This is a CLI based TicTacToe Game
+
+Game has two modes : 
+- Single Player ( Play with computer )
+- Two Player ( Play with your friend )
  
 ---
 
 
 ## Requirements
 
-1. make 
-
-2. Compiler : gcc or clang
+1. GNU Make installed
+2. C++ Compiler : gcc or clang
 
 
 ---
