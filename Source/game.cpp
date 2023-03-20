@@ -288,7 +288,7 @@ void game::play_two_player()
 		}
 
 		std::cout << "\n     " << Player1 << " - " << "X" << "\n";
-		std::cout << "     " << Player2 << " - " << "0" << "\n";
+		std::cout << "     " << Player2 << " - " << "O" << "\n";
 
 		print_board();
 
@@ -303,9 +303,9 @@ void game::play_two_player()
 		do
 		{
 			std::cout << "Enter 2nd index : ";
-			std::cin >> i;
+			std::cin >> j;
 		}
-		while (i > 2 || i < 0);
+		while (j > 2 || j < 0);
 
 
 		// check for correct input
