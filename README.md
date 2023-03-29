@@ -1,10 +1,14 @@
 # Tic_Tac_Toe
 
+
 This is a CLI based TicTacToe Game
 
 Game has two modes : 
 - Single Player ( Play with computer )
 - Two Player ( Play with your friend )
+
+***Play the game*** [here](https://replit.com/@KaranSemwal/TicTacToe?v=1)
+
  
 ---
 
@@ -26,6 +30,7 @@ Game has two modes :
           ```make g++ run```
    * If you have clang installed run this command :
           ```make clang run``` 
+          
 
 
 
