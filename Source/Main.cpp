@@ -7,7 +7,7 @@ int main()
 {
 	while (true)
 	{
-		system("cls");
+		system(CLEAR_SCREEN);
 		game g_object = game();
 
 		if (g_object.set_game_mode() == 0)
@@ -26,7 +26,7 @@ int main()
 		break;
 	}
 
-	system("cls");
+	system(CLEAR_SCREEN);
 	std::cout << "\n\n ------------ Have a nice day ------------\n\n";
 	std::cin.get();
 }

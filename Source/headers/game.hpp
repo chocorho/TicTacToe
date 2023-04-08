@@ -1,5 +1,13 @@
 #include <string>
 
+#if defined(_WIN32)
+#	define CLEAR_SCREEN "cls"
+#elif defined(_WIN64)
+#	define CLEAR_SCREEN "cls"
+#else
+#	define CLEAR_SCREEN  "clear"
+#endif
+
 class game
 {
 public:

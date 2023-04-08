@@ -171,14 +171,14 @@ void game::check_winner()
 		{
 			if (board[i][0] == board[i][2] && board[i][0] == 'O')
 			{
-				system("cls");
+				system(CLEAR_SCREEN);
 				print_board();
 				print_win_message(Player1);            
 				WINNER = true;
 			}
 			else if (board[i][0] == board[i][2] && board[i][0] == 'X')
 			{
-				system("cls");
+				system(CLEAR_SCREEN);
 				print_board();
 				print_win_message(Player2);
 				WINNER = true;
@@ -193,7 +193,7 @@ void game::check_winner()
 		{
 			if (board[0][i] == board[2][i] && board[0][i] == 'O')
 			{
-				system("cls");
+				system(CLEAR_SCREEN);
 				print_board();
 				print_win_message(Player1);
 				WINNER = true;
@@ -201,7 +201,7 @@ void game::check_winner()
 
 			else if (board[0][i] == board[2][i] && board[0][i] == 'X')
 			{
-				system("cls");
+				system(CLEAR_SCREEN);
 				print_board();
 				print_win_message(Player2);
 				WINNER = true;
@@ -214,7 +214,7 @@ void game::check_winner()
 	{
 		if (board[0][0] == board[2][2] && board[0][0] == 'O')
 		{
-			system("cls");
+			system(CLEAR_SCREEN);
 			print_board();
 			print_win_message(Player1);
 			WINNER = true;
@@ -222,7 +222,7 @@ void game::check_winner()
 
 		else if (board[0][0] == board[2][2] && board[0][0] == 'X')
 		{
-			system("cls");
+			system(CLEAR_SCREEN);
 			print_board();
 			print_win_message(Player2);
 			WINNER = true;
@@ -234,7 +234,7 @@ void game::check_winner()
 	{
 		if (board[2][0] == board[0][2] && board[2][0] == 'O')
 		{
-			system("cls");
+			system(CLEAR_SCREEN);
 			print_board();
 			print_win_message(Player1);
 			WINNER = true;
@@ -242,7 +242,7 @@ void game::check_winner()
 
 		if (board[2][0] == board[0][2] && board[2][0] == 'X')
 		{
-			system("cls");
+			system(CLEAR_SCREEN);
 			print_board();
 			print_win_message(Player2);
 			WINNER = true;
@@ -279,7 +279,7 @@ void game::play_two_player()
 
 	while (true)
 	{
-		system("cls");
+		system(CLEAR_SCREEN);
 
 		if (check_game_draw())
 		{
@@ -418,7 +418,7 @@ void game::play_single_player()
 
 	while (true)
 	{
-		system("cls");
+		system(CLEAR_SCREEN);
 
 		if (check_game_draw())
 		{
