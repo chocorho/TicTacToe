@@ -1,13 +1,11 @@
-# Tic_Tac_Toe
+# TicTacToe-Console
 
 
-This is a CLI based TicTacToe Game
-
-Game has two modes : 
+This is a Console based TicTacToe Game having two game modes : 
 - Single Player ( Play with computer )
-- Two Player ( Play with your friend )
+- Two Player    ( Play with friend )
 
-***Play the game*** [here](https://replit.com/@KaranSemwal/TicTacToe?v=1)
+**Try the game** [here](https://replit.com/@KaranSemwal/TicTacToe?v=1)
 
  
 ---
