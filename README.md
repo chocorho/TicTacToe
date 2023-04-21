@@ -1,7 +1,8 @@
-# TicTacToe-Console
+# TicTacToe
 
 
-This is a Console based TicTacToe Game having two game modes : 
+A Console based TicTacToe Game.
+The game has two game modes : 
 - Single Player ( Play with computer )
 - Two Player    ( Play with friend )
 
